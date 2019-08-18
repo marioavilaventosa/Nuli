@@ -1,0 +1,32 @@
+{% load static %}
+<html>
+    <head>
+        <title>Nuli</title>
+        <meta name="Nuli" content="Nuli WebApp">
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href='{% static "img/logo.png" %}'>
+        <link rel="stylesheet" href='{% static "style.css" %}'>
+    </head>
+    <body>
+        <header>
+                <a href="/"><img src='{% static "img/logo.png" %}' alt="Logo" width="100px"></a>
+                <span><a href="/cuentas/login">Inciar Sesión</a> | <a href="/registro"> Registrarse</a></span>
+        </header>
+        <nav>
+            <ul>
+                <a href="/"><li>Inicio</li></a>
+                <a href="/progreso"><li>Progreso</li></a>
+                <a href="/entrenamientos"><li>Entrenamientos</li></a>
+                <a href="/tu_entrenamiento"><li>Tu Entrenamiento</li></a>
+                <a href="/calculadora_calorias"><li>Calculadora de calorías</li></a>
+            </ul>
+        </nav>
+        <h2>Registro</h2>
+        <form method="post">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button type="submit">Registrame</button>
+        </form>
+    </body>
+</html> 

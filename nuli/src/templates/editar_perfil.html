@@ -1,0 +1,43 @@
+{% load static %}
+<html>
+    <head>
+        <title>Nuli</title>
+        <meta name="Nuli" content="Nuli WebApp">
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href='{% static "img/logo.png" %}'>
+        <link rel="stylesheet" href='{% static "style.css" %}'>
+    </head>
+    <body>
+        <header>
+            <a href="/"><img src='{% static "img/logo.png" %}' alt="Logo" width="100px"></a>
+            <span><a href="/editar_perfil">Editar Perfil</a> | <a href="{% url 'logout' %}"> Salir</a></span>
+        </header>
+        <nav>
+            <ul>
+                <a href="/"><li>Inicio</li></a>
+                <a href="/progreso"><li>Progreso</li></a>
+                <a href="/entrenamientos"><li>Entrenamientos</li></a>
+                <a href="/tu_entrenamiento"><li>Tu Entrenamiento</li></a>
+                <a href="/calculadora_calorias"><li>Calculadora de calorías</li></a>
+            </ul>
+        </nav>
+        <p class="importante">*Importante* Si te acabas de registrar tienes que rellenar estos campos para poder empezar a usar Nuli</p>
+        <h2>Editar Perfil</h2>
+        <section class="editar_perfil">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <p>*Si cambias de objetivo tu entrenamiento cambiará</p>
+                <button type="submit">Edita tu perfil</button>
+            </form>
+            <ul>
+                <li>Si no haces nada de ejercicio y trabajas sentado: <b>Nada de ejercicio</b></li>
+                <li>Si realizas ejercicio dos días por semana: <b>Ejercicio Ligero</b></li>
+                <li>Si haces ejercicio unos cuatro días por semana: <b>Ejercicio Moderado</b></li>
+                <li>Si haces ejercicio seis días a la semana: <b>Ejercicio Regular</b></li>
+                <li>Si eres deportista de élite o entrenas muy intenso cada día: <b>Ejercicio Intenso</b></li>
+            </ul>
+        </section>
+    </body>
+</html>
