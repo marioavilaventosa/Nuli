@@ -1,0 +1,156 @@
+{% load static %}
+<html>
+    <head>
+        <title>Nuli</title>
+        <meta name="Nuli" content="Nuli WebApp">
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href='{% static "img/logo.png" %}'>
+        <link rel="stylesheet" href='{% static "style.css" %}'>
+        <script>
+            function findTotal(){
+                var peso = document.getElementById('peso').value;
+                var altura = document.getElementById('altura').value;
+                var edad = document.getElementById('edad').value;
+                var sexo = document.getElementById('sexo').value;
+                var actividad = document.getElementById('actividad').value;
+                var objetivo = document.getElementById('objetivo').value;
+                var error = false;
+                var falta = false;
+                /* Se comprueban que todos los campos estan escritos */
+                if (peso.length == 0 || altura.length == 0 || edad.length == 0) {
+                    falta = true
+                }
+                /* Se comprueba que los campos sean numeros */
+                for(i=0; i < peso.length; i++) {
+                    if (isNaN(peso[i]) == true){
+                        error = true;
+                    }
+                }
+                for(i=0; i < altura.length; i++) {
+                    if (isNaN(altura[i]) == true){
+                        error = true;
+                    }
+                }
+                for(i=0; i < edad.length; i++) {
+                    if (isNaN(edad[i]) == true){
+                        error = true;
+                    }
+                }
+                var tmb = 0;
+                tmb += 10 * peso
+                tmb += 6.25 * altura
+                tmb -= 5 * edad
+                if (sexo == "hombre"){
+                    tmb += 5
+                } else {
+                    tmb -= 161
+                }
+                if (actividad == "nada_de_ejercicio") {
+                    tmb += 1.2
+                } else if (actividad == "ejercicio_ligero") {
+                    tmb *= 1.375
+                } else if  (actividad == "ejercicio_moderado") {
+                    tmb *= 1.55
+                } else if (actividad == "ejercicio_regular") {
+                    tmb += 1.725
+                } else {
+                    tmb *= 1.9
+                }
+                if (objetivo == "definicion") {
+                    tmb -= 200
+                } else if (objetivo == "musculacion") {
+                    tmb += 200
+                }
+                tmb = Math.floor(tmb)
+                if (error == true) {
+                    document.getElementById('calorias').value = "Introduce bien los campos"
+                } else if (falta == true) {
+                    document.getElementById('calorias').value = "Introduce todos los campos"
+                } else {
+                    document.getElementById('calorias').value = "Debes de consumir " + tmb + " calorías diarias"
+                }
+            }
+        </script>
+    </head>
+{% if user.is_authenticated %}
+    <body>
+        <header>
+            <a href="/"><img src='{% static "img/logo.png" %}' alt="Logo" width="100px"></a>
+            <span><a href="/editar_perfil">Editar Perfil</a> | <a href="{% url 'logout' %}"> Salir</a></span>
+        </header>
+        <nav>
+            <ul>
+                <a href="/"><li>Inicio</li></a>
+                <a href="/progreso"><li>Progreso</li></a>
+                <a href="/entrenamientos"><li>Entrenamientos</li></a>
+                <a href="/tu_entrenamiento"><li>Tu Entrenamiento</li></a>
+                <a href="/calculadora_calorias"><li>Calculadora de calorías</li></a>
+            </ul>
+        </nav>
+        <section class="calculadora_calorias">
+            <p>Las calorías que debes consumir son: {{tmb}}</p>
+            <p>¿De donde sacamos esta fórmula?</p>
+            <p>TMB Mujer: (10x peso) + (6,25 x altura) – (5 x edad) – 161</p>
+            <p>TMB Hombre: (10 x peso) + (6,25 x altura) – (5 x edad) + 5</p>
+            <p>Si no haces nada de ejercicio y trabajas sentado: TMB x 1,2</p>
+            <p>Si realizas ejercicio ligero dos días por semana: TMB x 1,375
+            <p>Si haces ejercicio moderado, unos cuatro días por semana: TMB x 1,55
+            <p>Si hacer deporte regular seis días a la semana: TMB x 1,725
+            <p>Si eres deportista de élite o entrenas muy intenso cada día: TMB x 1,9</p>
+        </section>
+    </body>
+{% else %}
+    <body>
+        <header>
+            <a href="/"><img src='{% static "img/logo.png" %}' alt="Logo" width="100px"></a>
+            <span><a href="/cuentas/login">Inciar Sesión</a> | <a href="/registro"> Registrarse</a></span>
+        </header>
+        <nav>
+            <ul>
+                <a href="/"><li>Inicio</li></a>
+                <a href="/progreso"><li>Progreso</li></a>
+                <a href="/entrenamientos"><li>Entrenamientos</li></a>
+                <a href="/tu_entrenamiento"><li>Tu Entrenamiento</li></a>
+                <a href="/calculadora_calorias"><li>Calculadora de calorías</li></a>
+            </ul>
+        </nav>
+        <section>
+                <div class="calculadora_calorias_nr">
+                    <div class="calculadora_calorias_nr_inputs">
+                        Peso: <input onblur="tmb()" type="text" name="peso" id="peso"/>
+                        Altura: <input onblur="tmb()" type="text" name="altura" id="altura"/>
+                        Edad: <input onblur="tmb()" type="text" name="edad" id="edad"/>
+                        Sexo: <select onblur="tmb()" name="sexo" id="sexo">
+                                <option value="hombre">Hombre</option>
+                                <option value="mujer">Mujer</option>
+                        </select>
+                        Actividad: <select onblur="tmb()" name="actividad" id="actividad">
+                                <option value="nada_de_ejercicio">Nada de ejercicio</option>
+                                <option value="ejercicio_ligero">Ejercicio Ligero</option>
+                                <option value="ejercicio_moderado">Ejercicio Moderado</option>
+                                <option value="ejercicio_regular">Ejercicio Regular</option>
+                                <option value="ejercicio_intenso">Ejercicio Intenso</option>
+                        </select>
+                        Objetivo: <select onblur="tmb()" name="objetivo" id="objetivo">
+                                <option value="definicion">Definicion</option>
+                                <option value="mantenimiento">Mantenimiento</option>
+                                <option value="musculacion">Musculacion</option>
+                        </select>
+                        <input class="espacio" type="button" value="Calcular_calorías" onclick="findTotal()" />
+                    </div>
+                    <ul>
+                        <li>Si no haces nada de ejercicio y trabajas sentado: <b>Nada de ejercicio</b></li>
+                        <li>Si realizas ejercicio dos días por semana: <b>Ejercicio Ligero</b></li>
+                        <li>Si haces ejercicio unos cuatro días por semana: <b>Ejercicio Moderado</b></li>
+                        <li>Si haces ejercicio seis días a la semana: <b>Ejercicio Regular</b></li>
+                        <li>Si eres deportista de élite o entrenas muy intenso cada día: <b>Ejercicio Intenso</b></li>
+                    </ul>
+                </div>
+                <div class="resultado">
+                    Calorias a consumir: <input readonly="readonly" type="text" name="calorias" id="calorias"/> 
+                </div>
+        </section>
+    </body>
+{% endif %}
+</html>

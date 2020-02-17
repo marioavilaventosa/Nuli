@@ -1,0 +1,76 @@
+{% load static %}
+<html>
+    <head>
+        <title>Nuli</title>
+        <meta name="Nuli" content="Nuli WebApp">
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500&display=swap" rel="stylesheet">
+        <link rel="icon" type="image/png" href='{% static "img/logo.png" %}'>
+        <link rel="stylesheet" href='{% static "style.css" %}'>
+    </head>
+{% if user.is_authenticated %}
+    <body>
+        <header>
+            <a href="/"><img src='{% static "img/logo.png" %}' alt="Logo" width="100px"></a>
+            <span><a href="/editar_perfil">Editar Perfil</a> | <a href="{% url 'logout' %}"> Salir</a></span>
+        </header>
+        <nav>
+            <ul>
+                <a href="/"><li>Inicio</li></a>
+                <a href="/progreso"><li>Progreso</li></a>
+                <a href="/entrenamientos"><li>Entrenamientos</li></a>
+                <a href="/tu_entrenamiento"><li>Tu Entrenamiento</li></a>
+                <a href="/calculadora_calorias"><li>Calculadora de calorías</li></a>
+            </ul>
+        </nav>
+        <section>
+            <p><b>"{{ frase }}"</b></p>
+            {% if descanso %}
+            <p><b>Descansa el día de hoy. Recuerda que los músculos también necesitan descansar</b></p>
+            {% elif dia_actual %}
+            <p> El día de hoy ya has entrenado ¡Enhorabuena!</p>
+            {% else %}
+            <h2 class="nombre_dia">{{ahora}}</h2>
+            <div class="ejercicios">
+                {% for ejercicio in ejercicios%}
+                    <div class="ejercicio">
+                        <a href="{{ ejercicio.get_absolute_url }}"><img src='{{ ejercicio.foto }}' alt=""></a>
+                        <a href="{{ ejercicio.get_absolute_url }}"><p>{{ ejercicio }}</p></a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="btnentrenamiento">
+                <a href="{% url 'terminar_entrenamiento' %}">Terminar Entrenamiento</a>
+            </div>
+            {% endif %}
+        </section>
+        {{prueba}}
+    </body>
+{% else %}
+    <body>
+        <header>
+            <a href="/"><img src='{% static "img/logo.png" %}' alt="Logo" width="100px"></a>
+            <span><a href="/cuentas/login">Inciar Sesión</a> | <a href="/registro"> Registrarse</a></span>
+        </header>
+        <nav>
+            <ul>
+                <a href="/"><li>Inicio</li></a>
+                <a href="/progreso"><li>Progreso</li></a>
+                <a href="/entrenamientos"><li>Entrenamientos</li></a>
+                <a href="/tu_entrenamiento"><li>Tu Entrenamiento</li></a>
+                <a href="/calculadora_calorias"><li>Calculadora de calorías</li></a>
+            </ul>
+        </nav>
+        <section class="inicio_nr">     
+            <h1>¿Como funciona la WebApp Nuli?</h1>
+            <p>Registrate e Inicia Sesión para poder disfrutar de toda una rutina preparada especialmente
+                para tus objetivos, cada día tu sesión de entrenamiento cambiará automaticamente para poder entrenar diariamente
+                en el gimnasio, también habrá días de descanso por supuesto , ver cuantas calorías diarias debes consumir,
+                 cambiar a cualquier entrenamiento que tenemos disponible, ver todo tu semana planificada de entrenamiento
+                  e incluso ver tu progreso del año, ver las calorías quemadas de cada día y cuantos días has entrenado
+            </p>
+            <p>Lo único que tienes que hacer es <a href="/registro">Registrarte</a>  o <a href="/cuentas/login">Iniciar Sesión</a> </p>
+        </section>
+    </body>
+{% endif %}
+</html>

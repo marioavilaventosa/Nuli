@@ -1,0 +1,393 @@
+/* Generales */
+
+body{
+    width: 70%;
+    margin: auto;
+    font-family: Montserrat;
+    font-weight: 300;
+    background-color: #f8f8f8;
+}
+
+a, a:hover{
+    color: #72308b;
+    text-decoration: none;
+}
+
+h2 {
+    margin-top: 5%;
+}
+
+h1{
+    color: #72308b;
+    text-align: center;
+}
+
+.detalle_dia{
+    border-top: 1px solid #cbcbcb;
+}
+/* Cabecera */
+
+header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #72308b;
+}
+
+header a, header a:hover{
+    color: #72308b;
+}
+
+/* Menú */
+
+nav{
+    background-color: #72308b;
+    margin: 0 -21.5%;
+}
+
+ul{
+    padding: 0 15%;
+}
+
+nav ul a li{
+    display: inline-block;
+    padding: 1% 2%;
+}
+
+nav ul a li, nav ul a:hover li{
+    color: white;
+}
+
+/* Inicio */
+
+section p{
+    text-align: center;
+    margin-top: 5%;
+    font-weight: 500;
+}
+
+.ejercicios, .entrenamientos{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.ejercicios{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+.ejercicio{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2%;
+    font-size: 12px;
+    border: 1px solid#cbcbcb;
+    flex: 0 20%;  
+    -webkit-box-shadow: 0px 18px 20px 0px rgba(203,203,203,1);
+    -moz-box-shadow: 0px 18px 20px 0px rgba(203,203,203,1);
+    box-shadow: 0px 18px 20px 0px rgba(203,203,203,1);
+    width: 21%;
+}
+
+.ejercicio img, .entrenamiento img{
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid#cbcbcb;
+}
+
+.ejercicio p, .entrenamiento p{
+    font-weight: 500;
+    color: #72308b;
+}
+
+.btnentrenamiento{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 5%;
+}
+
+.btnentrenamiento a{
+    display: block;
+    background-color: #72308b;
+    color: white;
+    padding: 2%;
+    border-radius: 7%;
+}
+
+.btnentrenamiento span{
+    font-size: 40px;
+    background-color: #72308b;
+    color: white;
+    border-radius: 50%;
+    padding: 2% 50%;
+    margin-left: 35%;
+}
+
+.masejercicios{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.masejercicios ul{
+    background-color: #72308b;
+    width: 300px;
+    height: 130px;
+    color: white;
+    display: none;
+}
+
+.masejercicios ul li{
+    list-style: none;
+    margin-top: 5%;
+}
+
+.masejercicios ul li:nth-child(1){
+    margin-top: 35%;
+}
+
+/* ----------------------- */
+
+.inicio_nr{
+    text-align: center;
+}
+
+.inicio_nr h1{
+    color: #72308b;
+}
+
+.nombre_dia{
+    text-align: center;
+    color: #72308b;
+    padding-bottom: 2%;
+    border-bottom: 1px solid #cbcbcb;
+}
+
+/* Entrenamientos */
+
+.entrenamiento{
+    margin: 1% 2%;
+    font-size: 12px;
+    border: 1px solid#cbcbcb;
+    -webkit-box-shadow: 0px 18px 20px 0px rgba(203,203,203,1);
+    -moz-box-shadow: 0px 18px 20px 0px rgba(203,203,203,1);
+    box-shadow: 0px 18px 20px 0px rgba(203,203,203,1);
+    display: inline-block;
+    width: 18%;
+}
+
+.entrenamientos{
+    margin-top: 0;
+}
+
+.link{
+    color: #72308b;
+}
+
+section h5:nth-last-of-type(1){
+    border-bottom: 1px solid #cbcbcb;
+    padding-bottom: 3%;
+}
+
+section h1 a{
+    color: #72308b;
+}
+
+/* Tu Entrenamiento */
+
+.ejercicioentreno{
+    margin: 1% 2%;
+    font-size: 12px;
+    border: 1px solid#cbcbcb;
+    -webkit-box-shadow: 0px 18px 20px 0px rgba(203,203,203,1);
+    -moz-box-shadow: 0px 18px 20px 0px rgba(203,203,203,1);
+    box-shadow: 0px 18px 20px 0px rgba(203,203,203,1);
+    display: inline-block;
+    width: 18%;
+}
+
+.ejercicioentreno img{
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid#cbcbcb;
+}
+
+.tituloentrenamiento{
+    color: #72308b;
+    text-align: center;
+}
+
+.diaentrenamiento{
+    padding-top: 2%;
+    margin: 2%;
+    text-decoration: underline;
+    border-top: 1px solid #cbcbcb;
+}
+
+/* Calculadora de calorias */
+
+.calculadora_calorias p:nth-child(1){
+    margin-bottom: 5%;
+    margin-top:5%;
+    color: #72308b;
+    font-size: 25px;
+}
+
+
+.calculadora_calorias p:nth-child(2){
+    color: #72308b;
+    font-size: 25px;
+}
+
+.calculadora_calorias p{
+    margin: 1%
+}
+
+/* --------------------------------------- */
+
+.calculadora_calorias_nr{
+    margin-top: 5%;
+}
+
+.calculadora_calorias_nr ul{
+    padding-right: 0%;
+    width: 30%;
+    margin-left: 10%;
+}
+
+.resultado{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.resultado input{
+    width: 70%;
+    margin-left: 5%;
+    border: none;
+    background: none;
+}
+
+.espacio{
+    margin-top: 20%;
+}
+
+.calculadora_calorias_nr_inputs{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    text-align: center;
+    margin-left: 10%;
+
+}
+.calculadora_calorias_nr_inputs input{
+    margin-bottom: 5%;
+}
+
+/* Progreso */
+
+.progreso_form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: baseline
+}
+
+.progreso{
+    margin-top: 5%;
+    width: 100%;
+}
+
+.progreso h4{
+    border-top: 1px solid#cbcbcb;
+    padding-top: 2%;
+}
+
+.barras{
+    display: flex;
+    flex-direction: row;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid#cbcbcb;
+}
+
+.barras div{
+    margin-right: 1%;
+    background:#72308b;
+    font-size: 12px;
+    width: 300px;
+    text-align: center;
+}
+
+.barras div p{
+    margin-top: 40px;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+}
+
+.dias{
+    display: flex;
+    padding-bottom: 2%;
+    border-bottom: 1px solid#cbcbcb;
+}
+
+.dias span{
+    font-size: 10px;
+}
+
+/* Editar Perfil */
+
+body h2{
+    margin-top: 3%;
+}
+
+.editar_perfil , .calculadora_calorias_nr{
+    display: flex;
+    flex-direction: row;
+}
+
+.editar_perfil ul{
+    padding-right: 0%;
+    width: 30%;
+}
+
+.editar_perfil ul li{
+    margin-top: 2%;
+}
+
+.importante{
+    color: #72308b;
+    font-weight: 500;
+    padding-top: 1%;
+}
+
+/* Detalle Ejercicio */
+
+.detalle_ejercicio{
+    margin: auto;
+    display: block;
+}
+
+/* Formularios */
+
+.errorlist{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: red;
+}
+
+form button{
+    background-color: #72308b; 
+    border: none;
+    padding: 1%;
+    border-radius: 10%;
+    color: white;
+}
